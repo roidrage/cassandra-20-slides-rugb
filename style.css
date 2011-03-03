@@ -1,0 +1,12 @@
+a {
+  color: black;
+}
+
+body {
+  font-family: "Sanuk-Bold", "Gill Sans", Helvetica;
+  font-weight: bold;
+}
+
+#footer {
+  display: none;
+}

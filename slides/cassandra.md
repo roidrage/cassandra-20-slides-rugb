@@ -17,7 +17,7 @@
 !SLIDE bullets incremental
 
 * Key-Value-Key-Value-Key-Value Store
-* Cassandra is a distributed, multi-dimensional Hashtable
+* Distributed, multi-dimensional Hashtable
 
 !SLIDE incremental bullets
 
@@ -30,21 +30,21 @@
 
 !SLIDE small
 
-# Key Spaces
+## Key Spaces
 
     @@@ ruby
     Users
 
 !SLIDE small
 
-# Row Keys
+## Row Keys
 
     @@@ ruby
     Users["mathias"]
 
 !SLIDE small
 
-# Column Families
+## Column Families
     
     @@@ ruby
     Users["mathias"]
@@ -52,19 +52,19 @@
 
 !SLIDE center
 
-# Column Families
+## Column Families
 
 ![Column Families](column_family.png)
 
 !SLIDE small
 
-# Columns
+## Columns
 
     "mathias" => {"name" => "Mathias Meyer"}
 
 !SLIDE small
 
-# Columns
+## Columns
 
     @@@ ruby
     Users["mathias"]
@@ -73,7 +73,7 @@
 
 !SLIDE small
 
-# Super Columns
+## Super Column Families
 
     @@@ ruby
     Users["mathias"]
@@ -83,13 +83,13 @@
 
 !SLIDE center bullets incremental
 
-# Super Column Families
+## Super Column Families
 
 ![Super Column Families](super_column_family.png)
 
 !SLIDE
 
-# Super Column Families
+## Super Column Families
 
     "mathias" => {
       UUID.new => {
@@ -141,30 +141,32 @@ height='345' pluginspage='http://www.macromedia.com/go/getflashplayer'></embed><
 
 !SLIDE smaller
 
-# Ruby (Column Families)
+## Ruby (Column Families)
 
     @@@ ruby
     require 'cassandra/0.7'
     client = Cassandra.new('SocialApp', '192.168.2.194:9160')
+
     client.get(:Users, 'mathias')
     # => {}
 
-!SLIDE
+!SLIDE smaller
 
-# Ruby
+## Ruby (Column Families)
 
     @@@ ruby
     client.insert(:Users, 'mathias', {
       'name' => 'Mathias Meyer',
       'company' => 'Basho'
     })
+
     client.get(:Users, 'mathias')
     # OrderedHash {"name"=>"Mathias Meyer"}
       {"name"=>1299163671967660}>
 
-!SLIDE
+!SLIDE smaller
 
-# Ruby (Super Column Families)
+## Ruby (Super Column Families)
 
     @@@ ruby
     client.insert(:FriendFeed, 'mathias', {
@@ -172,6 +174,7 @@ height='345' pluginspage='http://www.macromedia.com/go/getflashplayer'></embed><
     }, {
       :ttl => 1800
     })
+
     client.get(:FriendFeed, 'mathias')
     
 !SLIDE
