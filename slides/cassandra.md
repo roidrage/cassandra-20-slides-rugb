@@ -32,18 +32,21 @@
 
 # Key Spaces
 
+    @@@ ruby
     Users
 
 !SLIDE small
 
 # Row Keys
 
+    @@@ ruby
     Users["mathias"]
 
 !SLIDE small
 
 # Column Families
     
+    @@@ ruby
     Users["mathias"]
          [:UserDetails]
 
@@ -57,7 +60,6 @@
 
 # Columns
 
-    @@@ ruby
     "mathias" => {"name" => "Mathias Meyer"}
 
 !SLIDE small
@@ -69,13 +71,6 @@
          [:UserDetails]
          ["name"] = "Mathias Meyer"
 
-!SLIDE bullets incremental
-
-# Data
-
-* Is presorted
-* It's a distributed, ordered hash, duh!
-
 !SLIDE small
 
 # Super Columns
@@ -83,7 +78,7 @@
     @@@ ruby
     Users["mathias"]
          [:FriendFeed]
-         [TimeUUID.new]
+         [UUID.new]
          ["Liked a song"] = "sean"
 
 !SLIDE center bullets incremental
@@ -91,6 +86,23 @@
 # Super Column Families
 
 ![Super Column Families](super_column_family.png)
+
+!SLIDE
+
+# Super Column Families
+
+    "mathias" => {
+      UUID.new => {
+        "Sean" => 'liked a song'
+      }
+    }
+
+!SLIDE bullets incremental
+
+# Data
+
+* Is presorted
+* It's a distributed, ordered hash, duh!
 
 !SLIDE bullets incremental
 
@@ -146,6 +158,9 @@ height='345' pluginspage='http://www.macromedia.com/go/getflashplayer'></embed><
       'name' => 'Mathias Meyer',
       'company' => 'Basho'
     })
+    client.get(:Users, 'mathias')
+    # OrderedHash {"name"=>"Mathias Meyer"}
+      {"name"=>1299163671967660}>
 
 !SLIDE
 
@@ -157,7 +172,12 @@ height='345' pluginspage='http://www.macromedia.com/go/getflashplayer'></embed><
     }, {
       :ttl => 1800
     })
-
+    client.get(:FriendFeed, 'mathias')
+    
 !SLIDE
 
 # Done
+
+!SLIDE
+
+# Next!
