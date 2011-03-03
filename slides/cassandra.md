@@ -10,6 +10,10 @@
 
 # [@roidrage](http://twitter.com/roidrage)
 
+!SLIDE
+
+# [The NoSQL Handbook](http://nosqlhandbook.com)
+
 !SLIDE center
 
 # ZOMG, IT'S NOSQL!!
@@ -125,6 +129,7 @@
 
 * Dynamo-inspired
 * Reads and writes quorum-based
+* Random or Ordered Partitioning
 
 !SLIDE bullets center
 
